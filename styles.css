@@ -1,0 +1,199 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+ul li {
+    flex-grow: 1;
+}
+
+h2,
+h3,
+a {
+    color: #34495e;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+.logo {
+    margin: 0;
+    font-size: 1.45em;
+}
+
+.main-nav {
+    margin-top: 5px;
+
+}
+
+.logo a,
+.main-nav a {
+    padding: 10px 15px;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+}
+
+.main-nav a {
+    color: #34495e;
+    font-size: .99em;
+}
+
+.main-nav a:hover {
+    color: #718daa;
+}
+
+
+
+.header {
+    padding-top: .5em;
+    padding-bottom: .5em;
+    border: 1px solid #a2a2a2;
+    background-color: #f4f4f4;
+    -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+/**
+Cartas
+*/
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid lightgray;
+    box-shadow: 2px 2px 8px 4px #d3d3d3d1;
+    border-radius: 15px;
+    font-family: sans-serif;
+    width: 30%;
+    margin: 1%;
+}
+
+.titulo {
+    font-size: 24px;
+    padding: 10px 10px 0 10px;
+    text-align: center;
+}
+
+.cuerpo {
+    padding: 10px;
+    text-align: center;
+}
+
+.cuerpo img {
+    width: 100%;
+    height: auto;
+}
+
+.pie {
+    background: #6699ff;
+    border-radius: 0 0 15px 15px;
+    padding: 10px;
+    text-align: center;
+}
+
+.pie a {
+    text-decoration: none;
+    color: white;
+}
+
+.pie a:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: ""
+}
+
+.containerCartas {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/**
+MEDIA QUERYS
+*/
+@media (min-width: 500px) {
+
+    .header,
+    .main-nav {
+        display: flex;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+}
+
+@media (min-width: 850px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .main-nav {
+        flex-grow: 1;
+        justify-content: flex-start;
+    }
+
+    .main-nav li {
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+
+    .licerrar {
+        flex-grow: 1 !important;
+        flex-shrink: 2 !important;
+    }
+
+    .licerrar a {
+        float: right;
+    }
+}
+
+@media (max-width:850px) {
+    div.tarjeta {
+        width: 40%;
+    }
+}
+
+@media (max-width:500px) {
+    div.tarjeta {
+        width: 90%;
+    }
+}
