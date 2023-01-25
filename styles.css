@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -7,6 +9,7 @@ body {
     line-height: 1.6;
     margin: 0;
     min-height: 100vh;
+    min-width: 400px;
 }
 
 ul {
@@ -29,8 +32,6 @@ a {
 a {
     text-decoration: none;
 }
-
-
 
 .logo {
     margin: 0;
@@ -74,11 +75,7 @@ a {
     border-radius: 5px;
 }
 
-.container{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: center;
-}
+
 
 /**
 Cartas
@@ -124,17 +121,10 @@ Cartas
     color: white;
 }
 
-.pie a:after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    content: ""
-}
 
-.containerCartas {
+
+.containerCartas,
+.container {
     display: flex;
     width: 90%;
     margin: auto;
@@ -143,8 +133,18 @@ Cartas
 }
 
 /**
-MEDIA QUERYS
+ESTILO DIV BOTONES
 */
+.container {
+    padding: 10px 0px;
+
+}
+
+.container button {
+    padding: 2px 0px;
+    margin: 0px 2px;
+}
+
 @media (min-width: 500px) {
 
     .header,
@@ -160,27 +160,29 @@ MEDIA QUERYS
 
 }
 
-@media (min-width: 850px) {
+/*Para cuando mi pantalla es mayor de 1000px*/
+@media (min-width: 1000px) { 
+    /*Mi header tiene un h1 y una lista flex*/
     .header {
         flex-direction: row;
         justify-content: space-between;
     }
-
+    /*Mi lista flex*/
     .main-nav {
         flex-grow: 1;
         justify-content: flex-start;
     }
-
+    /*Los items de la lista flex*/
     .main-nav li {
         flex-grow: 0;
         flex-shrink: 0;
     }
-
+    /*El elemento de la lista de cerrar sesión*/
     .licerrar {
         flex-grow: 1 !important;
-        flex-shrink: 2 !important;
+        flex-shrink: 1 !important;
     }
-
+    /*El enlace de cerrar sesión*/
     .licerrar a {
         float: right;
     }
@@ -190,10 +192,26 @@ MEDIA QUERYS
     div.tarjeta {
         width: 40%;
     }
+
+    .main-nav {
+        flex-wrap: wrap;
+    }
+
+    .main-nav li {
+        flex-grow: 1;
+        flex-shrink: 1;
+        width: 30%;
+        display: inline-block;
+    }
+
 }
 
 @media (max-width:500px) {
     div.tarjeta {
         width: 90%;
+    }
+
+    .main-nav {
+        font-size: 12px;
     }
 }

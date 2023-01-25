@@ -23,20 +23,18 @@
         </ul>
     </header>
 
-    <div>
-        <button onclick="addCaja()">Añadir caja</button>
-        <button onclick="deleteCaja()">Borrar Cajas</button>
+    <div class="container" style="padding: 10px 0px;">
+        <button onclick="mostrarCaja()" id="mostrarCajaOculta">Mostrar Caja</button>
+        <button onclick="ocultarCaja()" id="ocultarCajaOculta">Ocultar Caja</button>
 
-        <button onclick="mostrarCaja()">Mostrar Caja</button>
-        <button onclick="ocultarCaja()">Ocultar Caja</button>
-
-        <button onclick="ocultarCartas()">Ocultar Cartas</button>
-        <input type="hidden" value="5" id="contador"/>
+        <button onclick="ocultarCartas()" id="ocultarCartas">Ocultar Cartas</button>
+        <button onclick="mostrarCartas()" id="mostrarCartas">Mostrar Cartas</button>
+        <input type="hidden" value="5" id="contador" />
     </div>
 
     <div class="containerCartas">
         <div class="tarjeta">
-            <div class="titulo">MARCA Y MODELO</div>
+            <div class="titulo">Porsche 911</div>
             <div class="cuerpo">
                 <img src="img/coche1.png" alt="">
             </div>
@@ -45,7 +43,7 @@
             </div>
         </div>
         <div class="tarjeta">
-            <div class="titulo">MARCA Y MODELO</div>
+            <div class="titulo">Chevrolet Impala Cabriolet</div>
             <div class="cuerpo">
                 <img src="img/coche2.png" alt="">
             </div>
@@ -54,7 +52,7 @@
             </div>
         </div>
         <div class="tarjeta">
-            <div class="titulo">MARCA Y MODELO</div>
+            <div class="titulo">Mini Cooper</div>
             <div class="cuerpo">
                 <img src="img/coche3.png" alt="">
             </div>
@@ -63,7 +61,7 @@
             </div>
         </div>
         <div class="tarjeta">
-            <div class="titulo">MARCA Y MODELO</div>
+            <div class="titulo">Ferrari F450</div>
             <div class="cuerpo">
                 <img src="img/coche4.png" alt="">
             </div>
@@ -72,7 +70,7 @@
             </div>
         </div>
         <div class="tarjeta">
-            <div class="titulo">MARCA Y MODELO</div>
+            <div class="titulo">Chevrolet Malibú</div>
             <div class="cuerpo">
                 <img src="img/coche5.png" alt="">
             </div>
@@ -88,42 +86,55 @@
 </body>
 
 <script>
-    function addCaja() {
-        let nodo = document.getElementsByTagName('ul')[0]
-
-        if (document.getElementsByClassName('nuevacaja').length < 3) {
-            let li = document.createElement('li')
-            let link = document.createElement('a')
-
-            li.setAttribute('class', 'nuevacaja')
-            link.textContent = 'Nueva Caja'
-
-            li.appendChild(link)
-            nodo.appendChild(li)
-
-        }
-    }
-
-    function deleteCaja() {
-        if (document.getElementsByClassName('nuevacaja').length >= 1) {
-            let cuantos = document.getElementsByClassName('nuevacaja').length
-            let caja = document.getElementsByClassName('nuevacaja')[cuantos - 1]
-            caja.remove()
-        }
-    }
+    window.onload = ocultarBotones()
 
     function mostrarCaja() {
         document.getElementById('cajaOculta').style.display = 'inline'
+        ocultarBotones()
     }
 
     function ocultarCaja() {
         document.getElementById('cajaOculta').style.display = 'none'
+        ocultarBotones()
     }
 
     function ocultarCartas() {
         let numero = document.getElementById('contador').value
-        document.getElementsByClassName('tarjeta')[numero - 1].style.display = 'none'
-        document.getElementById('contador').value = numero - 1
+        if (numero > 0) {
+            document.getElementsByClassName('tarjeta')[numero - 1].style.display = 'none'
+            document.getElementById('contador').value = parseInt(numero) - 1
+        }
+        ocultarBotones()
+    }
+
+    function mostrarCartas() {
+        let numero = document.getElementById('contador').value
+        if (numero <= 4) {
+            document.getElementsByClassName('tarjeta')[numero].style.display = 'block'
+            document.getElementById('contador').value = parseInt(numero) + 1
+        }
+        ocultarBotones()
+    }
+
+    function ocultarBotones() {
+        let numero = document.getElementById('contador').value
+        if (numero == 0)
+            document.getElementById('ocultarCartas').disabled = true
+        if (numero == 5)
+            document.getElementById('mostrarCartas').disabled = true
+        if (numero > 0 && numero < 5) {
+            document.getElementById('ocultarCartas').disabled = false
+            document.getElementById('mostrarCartas').disabled = false
+        }
+        if (document.getElementById('cajaOculta').style.display == 'inline') {
+            document.getElementById('mostrarCajaOculta').disabled = true
+            document.getElementById('ocultarCajaOculta').disabled = false
+        }
+        else {
+            document.getElementById('mostrarCajaOculta').disabled = false
+            document.getElementById('ocultarCajaOculta').disabled = true
+        }
+
     }
 </script>
 
